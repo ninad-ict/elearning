@@ -1,4 +1,4 @@
-# MyWebApp: A Django Project for Content Upload
+# Elarning: A Django Project for Content Upload
 
 ## Description
 
