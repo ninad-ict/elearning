@@ -28,3 +28,13 @@ class ContentUploadSerializer(serializers.ModelSerializer):
         if len(value) > 1000:
             raise serializers.ValidationError("Content cannot be more than 1000 characters.")
         return value
+
+
+    def validate(self, data):
+        """
+        Check that the user has the 'admin' role before allowing content creation.
+        """
+        user = data.get('user')
+        if user and user.role != 'admin':  # Assuming 'role' is a field on the User model
+            raise serializers.ValidationError("Only admins are allowed to create content.")
+        return data
